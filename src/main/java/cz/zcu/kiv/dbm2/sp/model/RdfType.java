@@ -1,6 +1,5 @@
 package cz.zcu.kiv.dbm2.sp.model;
 
-import cz.zcu.kiv.dbm2.sp.util.Utils;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 
@@ -12,24 +11,20 @@ import java.util.Map;
 
 public class RdfType implements Comparable {
 
-    private Resource resource;
     private List<RdfPredicate> properties;
-    private String uriName;
-    private String typeName;
+    private String name;
 
-    public RdfType(Resource resource, String uriName) {
-        this.resource = resource;
-        this.uriName = uriName;
-        this.typeName = Utils.getLastPartFromURI(uriName);
+    public RdfType(String name) {
+        this.name = name;
         this.properties = new ArrayList<>();
     }
 
     /**
      * For each predicate in subject, generate object holding predicate info
      */
-    public void generateProperties() {
+    public void generateProperties(Resource resource) {
         for (Statement statement : resource.listProperties().toList()) {
-            RdfPredicate predicate = new RdfPredicate(this, statement.getPredicate().getLocalName(), statement.getPredicate().getURI(), false);
+            RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(), false);
             properties.add(predicate);
         }
         Collections.sort(properties);
@@ -45,7 +40,7 @@ public class RdfType implements Comparable {
         for (int i = 0; i < properties.size() - 1; i++) {
             for (int j = i + 1; j < properties.size(); j++) {
                 if (properties.get(i).equals(properties.get(j))) {
-                    String name = properties.get(i).getLocalName();
+                    String name = properties.get(i).getName();
                     int count = itemCount.containsKey(name) ? itemCount.get(name) : 1; //the first one on position "i"
                     itemCount.put(name, count + 1); //the second one on position "j", and then +1 for each next found
                     i = j; //move i to next occurence
@@ -55,22 +50,14 @@ public class RdfType implements Comparable {
         //change property with first occurrence
         for (Map.Entry item : itemCount.entrySet()) {
             for (RdfPredicate property : properties) {
-                if (property.getLocalName().equals(item.getKey())) {
-                    property.setLocalName(property.getLocalName() + "-count:" + item.getValue());
+                if (property.getName().equals(item.getKey())) {
+                    property.setName(property.getName() + "-count:" + item.getValue());
                     break;
                 }
             }
         }
         //remove all the other occurrences
-        properties.removeIf(i -> itemCount.containsKey(i.getLocalName()));
-    }
-
-    public Resource getResource() {
-        return resource;
-    }
-
-    public void setResource(Resource resource) {
-        this.resource = resource;
+        properties.removeIf(i -> itemCount.containsKey(i.getName()));
     }
 
     public List<RdfPredicate> getProperties() {
@@ -81,50 +68,42 @@ public class RdfType implements Comparable {
         this.properties = properties;
     }
 
-    public String getUriName() {
-        return uriName;
+    public String getName() {
+        return name;
     }
 
-    public void setUriName(String uriName) {
-        this.uriName = uriName;
-    }
-
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Equals based on typeName. This needs to be unique
+     * Equals based on name. This needs to be unique
      * @param o compared RdfType
      * @return true, if instances are equal
      */
     @Override
     public boolean equals(Object o) {
-        return (o instanceof RdfType) && (((RdfType) o).getTypeName()).equals(this.getTypeName());
+        return (o instanceof RdfType) && (((RdfType) o).getName()).equals(this.getName());
     }
 
     /**
-     * Return uriName hashCode
-     * @return uriName hashCode
+     * Return name hashCode
+     * @return name hashCode
      */
     @Override
     public int hashCode() {
-        return uriName.hashCode();
+        return name.hashCode();
     }
 
     /**
-     * Compare based on typeName. This needs to be unique
+     * Compare based on name. This needs to be unique
      * @param o compared RdfType
      * @return comparison result
      */
     @Override
     public int compareTo(Object o) {
         if (o instanceof RdfType) {
-            return this.getTypeName().compareTo(((RdfType) o).getTypeName());
+            return this.getName().compareTo(((RdfType) o).getName());
         }
         return 0;
     }

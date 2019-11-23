@@ -22,10 +22,10 @@
                 </tr>
                 <th:block th:each="type : *{types}">
                     <tr>
-                        <td th:text="*{types[__${typeStat.index}__].typeName}"></td>
+                        <td th:text="*{types[__${typeStat.index}__].name}"></td>
                         <td>
                             <input type="checkbox" name="includeOrigId"
-                                   th:value="*{types[__${typeStat.index}__].typeName}">
+                                   th:value="*{types[__${typeStat.index}__].name}">
                             <label>Include original ID</label>
                         </td>
                         <th:block th:each="property : *{types[__${typeStat.index}__].properties}">
@@ -33,7 +33,7 @@
                                 <input type="checkbox" name="selectedProperties"
                                        th:value="*{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].id}}"
                                        th:checked="*{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].selected}}"/>
-                                <label th:text="*{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].localName}}" ></label>
+                                <label th:text="*{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].name}}" ></label>
                             </td>
                         </th:block>
                     </tr>

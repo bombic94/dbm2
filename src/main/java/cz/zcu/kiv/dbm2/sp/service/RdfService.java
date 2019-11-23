@@ -4,7 +4,6 @@ import cz.zcu.kiv.dbm2.sp.model.RdfFormat;
 import cz.zcu.kiv.dbm2.sp.model.RdfPredicate;
 import cz.zcu.kiv.dbm2.sp.model.RdfType;
 import cz.zcu.kiv.dbm2.sp.model.SelectedPredicate;
-import cz.zcu.kiv.dbm2.sp.util.Constants;
 import cz.zcu.kiv.dbm2.sp.util.Utils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.jena.rdf.model.Model;
@@ -24,6 +23,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static org.apache.jena.rdfxml.xmlinput.impl.Names.RDF_TYPE;
 
 
 @Service
@@ -68,9 +69,9 @@ public class RdfService {
             for (Statement statement : resource.listProperties().toList()) {
                 Property predicate = statement.getPredicate();
                 RDFNode object = statement.getObject();
-                if (predicate.getURI().equals(Constants.RDF_TYPE)) {
-                    RdfType type = new RdfType(resource, object.toString());
-                    type.generateProperties();
+                if (predicate.getURI().equals(RDF_TYPE.toString())) {
+                    RdfType type = new RdfType(Utils.getLastPartFromURI(object.toString()));
+                    type.generateProperties(resource);
                     rdfTypes.add(type);
                 }
             }
@@ -102,17 +103,17 @@ public class RdfService {
             String uriBase = Utils.getBaseFromURI(resource.getURI());
             sb.append(uriBase);
 
-            String resourceTypeString = resource.getProperty(renamedModel.getProperty(Constants.RDF_TYPE)).getObject().toString();
+            String resourceTypeString = resource.getProperty(renamedModel.getProperty(RDF_TYPE.toString())).getObject().toString();
             //for each predicate in subject
             for (Statement statement : resource.listProperties().toList()) {
                 //for each selected predicate for renaming
                 for (SelectedPredicate selectedPredicate : selectedPredicates) {
 
                     //need to check if resource type is one of selected types and selected predicate is same as predicate
-                    if (statement.getPredicate().getLocalName().equals(selectedPredicate.getPredicate().getLocalName())
-                            && Utils.getLastPartFromURI(resourceTypeString).equals(selectedPredicate.getType().getTypeName())) {
+                    if (statement.getPredicate().getLocalName().equals(selectedPredicate.getPredicate().getName())
+                            && Utils.getLastPartFromURI(resourceTypeString).equals(selectedPredicate.getType().getName())) {
                         //append predicate name and object name to subject new name
-                        sb.append(selectedPredicate.getPredicate().getLocalName())
+                        sb.append(selectedPredicate.getPredicate().getName())
                                 .append("-")
                                 .append(Utils.getLastPartFromURI(statement.getObject().toString()))
                                 .append("-");
@@ -121,7 +122,7 @@ public class RdfService {
                     //if includeOrigId is checked for this subject type, add original resource ID
                     if (includeOrigId != null && includeOrigId.length > 0) {
                         for (String s : includeOrigId) {
-                            if (s.equals(selectedPredicate.getType().getTypeName())) {
+                            if (s.equals(selectedPredicate.getType().getName())) {
                                 appendOrigId = true;
                                 id = Utils.getLastPartFromURI(resource.getURI());
                             }

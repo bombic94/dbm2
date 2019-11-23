@@ -4,42 +4,22 @@ import java.util.UUID;
 
 public class RdfPredicate implements Comparable {
 
-    private RdfType rdfType;
+    private String name;
     private boolean selected;
-    private String localName;
-    private String uri;
     private String id;
 
-    public RdfPredicate(RdfType rdfType, String localName, String uri, boolean selected) {
-        this.rdfType = rdfType;
-        this.id = UUID.randomUUID().toString();
-        this.localName = localName;
-        this.uri = uri;
+    public RdfPredicate(String name, boolean selected) {
+        this.name = name;
         this.selected = selected;
+        this.id = UUID.randomUUID().toString();
     }
 
-    public RdfType getRdfType() {
-        return rdfType;
+    public String getName() {
+        return name;
     }
 
-    public void setRdfType(RdfType rdfType) {
-        this.rdfType = rdfType;
-    }
-
-    public String getLocalName() {
-        return localName;
-    }
-
-    public void setLocalName(String localName) {
-        this.localName = localName;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public boolean getSelected() {
@@ -60,13 +40,13 @@ public class RdfPredicate implements Comparable {
 
     @Override
     public boolean equals(Object o) {
-        return (o instanceof RdfPredicate) && (((RdfPredicate) o).getLocalName()).equals(this.getLocalName());
+        return (o instanceof RdfPredicate) && (((RdfPredicate) o).getName()).equals(this.getName());
     }
 
     @Override
     public int compareTo(Object o) {
         if (o instanceof RdfPredicate) {
-            return this.getLocalName().compareTo(((RdfPredicate) o).getLocalName());
+            return this.getName().compareTo(((RdfPredicate) o).getName());
         }
         return 0;
     }
