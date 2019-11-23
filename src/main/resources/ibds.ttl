@@ -1,0 +1,1033 @@
+@prefix mre:   <http://mre.zcu.cz/ontology/mre.owl#> .
+@prefix dscl:  <http://mre.zcu.cz/ontology/dscl.owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix ibd:   <http://mre.zcu.cz/ontology/ibd.owl#> .
+@prefix mreid: <http://mre.zcu.cz/id/> .
+@prefix ds:    <http://mre.zcu.cz/ontology/dasta.owl#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<http://test/89678d3a-1ad8-494e-b4d9-adf66d457500>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-08-27"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/85459f55-6e96-4158-bf4b-f3543d58b6f0>
+        a                              ibd:Histology ;
+        ibd:eventDate                  "2016-01-01"^^xsd:date ;
+        ibd:hasHistologyColon          ibd:Granuloma ;
+        ibd:hasHistologyDuodenum       ibd:Granuloma , ibd:CryptAbscesses ;
+        ibd:hasHistologyEsophagus      ibd:Granuloma , ibd:CryptAbscesses ;
+        ibd:hasHistologyStomach        ibd:InflammatoryChanges ;
+        ibd:hasHistologyTerminalIleum  ibd:Normal .
+
+<http://test/fd7937e9-0ccf-4647-95dc-f78e8f467327>
+        a              ibd:Laboratory ;
+        ibd:aLT        "22.0"^^xsd:float ;
+        ibd:aST        "31.0"^^xsd:float ;
+        ibd:albumin    "14.0"^^xsd:float ;
+        ibd:eventDate  "2015-09-11"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/8ffdab14-b78e-44cd-8231-835b169a5d4b>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2016-01-05"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:No ;
+        ibd:hasComplicationAbscess   ibd:No ;
+        ibd:hasComplicationCS        ibd:No ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:No ;
+        ibd:hasComplicationPSC       ibd:No ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/fe9d69b5-c85b-4126-af35-7b4880a75c07>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-09-11"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:No ;
+        ibd:hasComplicationAbscess   ibd:No ;
+        ibd:hasComplicationCS        ibd:No ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:No ;
+        ibd:hasComplicationPSC       ibd:No ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/8ab35d6f-6846-48e4-85c3-18573b89211c>
+        a                        ds:Weight ;
+        ds:weightValue           "69.0"^^xsd:float ;
+        ibd:eventDate            "2015-07-31"^^xsd:date ;
+        ibd:weightStandardScore  "1.5"^^xsd:float .
+
+<http://test/75f414fc-55ae-4560-85f1-09774de2f6b8>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-07-14"^^xsd:date ;
+        ibd:has6MMP    ibd:Normal ;
+        ibd:has6TGN    ibd:Normal ;
+        ibd:pCDAI      50 .
+
+<http://test/80adf148-9449-4d6c-bc79-ee82884a4c41>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-06-18"^^xsd:date ;
+        ibd:has6MMP    ibd:High ;
+        ibd:has6TGN    ibd:High ;
+        ibd:pCDAI      45 .
+
+<http://test/888ab290-79f3-4f53-bc32-dbfeece579dc>
+        a              ibd:Laboratory ;
+        ibd:aLT        "23.0"^^xsd:float ;
+        ibd:aST        "26.0"^^xsd:float ;
+        ibd:albumin    "12.0"^^xsd:float ;
+        ibd:eventDate  "2015-06-18"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/4965dbe1-084f-4424-98b6-f7b3b2f90b00>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-09-11"^^xsd:date ;
+        ibd:pCDAI      25 .
+
+<http://test/beafe68d-d38f-48d4-b86e-cd40e23db0de>
+        a              ibd:Laboratory ;
+        ibd:aLT        "54.0"^^xsd:float ;
+        ibd:aST        "25.0"^^xsd:float ;
+        ibd:albumin    "36.0"^^xsd:float ;
+        ibd:eventDate  "2015-12-10"^^xsd:date .
+
+<http://test/cefd58dd-aa2e-4454-bf1f-89802afe5b91>
+        a                        ds:Weight ;
+        ds:weightValue           "50.0"^^xsd:float ;
+        ibd:eventDate            "2015-09-11"^^xsd:date ;
+        ibd:weightStandardScore  "0.8"^^xsd:float .
+
+<http://test/71b4f7c2-6719-411c-a47e-ef4a8e519eae>
+        a                        ds:Weight ;
+        ds:weightValue           "65.0"^^xsd:float ;
+        ibd:eventDate            "2015-07-14"^^xsd:date ;
+        ibd:weightStandardScore  "1.5"^^xsd:float .
+
+<http://test/9703fe7b-d475-4fde-9cce-b83e5f7f0d77>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2016-01-05"^^xsd:date ;
+        ibd:has6MMP    ibd:Normal ;
+        ibd:has6TGN    ibd:Normal ;
+        ibd:pCDAI      15 .
+
+<http://test/522e561d-5ff1-4703-8d45-eb7976029a2a>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2016-01-03"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:Unknown ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:Yes ;
+        ibd:hasMarrowSuppression  ibd:Unknown ;
+        ibd:hasNausea             ibd:Unknown ;
+        ibd:otherSideEffects      "" .
+
+<http://test/6c983c9f-d8aa-4b1f-af56-8bb516cda410>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-03-23"^^xsd:date ;
+        ibd:pCDAI      30 .
+
+<http://test/bea01507-63db-406d-87cb-b52e1eb8aaad>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-07-14"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:Yes ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:Yes ;
+        ibd:otherSideEffects      "" .
+
+<http://test/1747ca6a-b5b8-46fe-9e5d-0d3dc2e5a128>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-07-27"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:Unknown ;
+        ibd:hasComplicationEN        ibd:Unknown ;
+        ibd:hasComplicationFistula   ibd:Yes ;
+        ibd:hasComplicationPSC       ibd:Yes ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/39301f0b-d984-48d2-b2d5-cdab35e9a70c>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-07-27"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:Unknown ;
+        ibd:otherSideEffects      "" .
+
+<http://test/129a182b-c471-45dc-8c07-137d4bc05917>
+        a                        ds:Height ;
+        ds:heightValue           170 ;
+        ibd:eventDate            "2016-01-05"^^xsd:date ;
+        ibd:heightStandardScore  "-0.1"^^xsd:float .
+
+<http://test/7625ae2c-3585-413a-97c7-da8e63e68473>
+        a                        ds:Weight ;
+        ds:weightValue           "50.0"^^xsd:float ;
+        ibd:eventDate            "2015-01-27"^^xsd:date ;
+        ibd:weightStandardScore  "0.5"^^xsd:float .
+
+<http://test/1e14b56b-32aa-4ee1-af17-ee5637fe98d2>
+        a                          ibd:Histology ;
+        ibd:eventDate              "2015-06-01"^^xsd:date ;
+        ibd:hasHistologyDuodenum   ibd:Normal ;
+        ibd:hasHistologyEsophagus  ibd:Normal ;
+        ibd:hasHistologyStomach    ibd:Normal , ibd:CryptAbscesses .
+
+<http://test/ff86300c-cd4d-46f0-804f-5d5cf957c658>
+        a                        ds:Weight ;
+        ds:weightValue           "48.0"^^xsd:float ;
+        ibd:eventDate            "2015-04-24"^^xsd:date ;
+        ibd:weightStandardScore  "0.15"^^xsd:float .
+
+<http://test/b3bc8f10-d823-42c6-b5d1-ac169a543ca4>
+        a                        ds:Weight ;
+        ds:weightValue           "50.0"^^xsd:float ;
+        ibd:eventDate            "2015-01-02"^^xsd:date ;
+        ibd:weightStandardScore  "0.5"^^xsd:float .
+
+<http://test/633cea51-5dda-4475-8b06-90ee777397d1>
+        a                        ds:Weight ;
+        ds:weightValue           "62.0"^^xsd:float ;
+        ibd:eventDate            "2015-06-25"^^xsd:date ;
+        ibd:weightStandardScore  "1.2"^^xsd:float .
+
+<http://test/892cffd6-5e0a-4869-9464-b83821122d6b>
+        a                        ds:Weight ;
+        ds:weightValue           "49.0"^^xsd:float ;
+        ibd:eventDate            "2015-02-26"^^xsd:date ;
+        ibd:weightStandardScore  "0.2"^^xsd:float .
+
+<http://test/b36c3988-f6f5-4d78-aed2-374079b21c8b>
+        a              ibd:Laboratory ;
+        ibd:aLT        "27.0"^^xsd:float ;
+        ibd:aST        "39.0"^^xsd:float ;
+        ibd:albumin    "15.0"^^xsd:float ;
+        ibd:eventDate  "2015-07-31"^^xsd:date .
+
+<http://test/032a17d8-9e2c-4f61-8723-2f3a9dfdfaa7>
+        a                        ds:Weight ;
+        ds:weightValue           "55.0"^^xsd:float ;
+        ibd:eventDate            "2016-01-05"^^xsd:date ;
+        ibd:weightStandardScore  "1.2"^^xsd:float .
+
+<http://test/02b1b4f9-9ca3-489c-b29e-cd566c15d768>
+        a                            ibd:Immunology ;
+        ibd:eventDate                "2015-06-01"^^xsd:date ;
+        ibd:hasImmunologyANA         ibd:Negative ;
+        ibd:hasImmunologyASCA        ibd:Negative ;
+        ibd:hasImmunologyASMA        ibd:Negative ;
+        ibd:hasImmunologyAbpancreas  ibd:Negative ;
+        ibd:hasImmunologyAtypANCA    ibd:Negative ;
+        ibd:hasImmunologyCANCA       ibd:Negative ;
+        ibd:hasImmunologyIntestineGobletCell
+                ibd:Negative ;
+        ibd:hasImmunologyPANCA       ibd:Negative ;
+        ibd:immunoglobulinG          "54.0"^^xsd:float .
+
+<http://test/c009741d-856e-4cd1-a161-833c56394624>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2016-01-05"^^xsd:date ;
+        ibd:has6MMP    ibd:Normal ;
+        ibd:has6TGN    ibd:Normal ;
+        ibd:pCDAI      30 .
+
+<http://test/2c3103f3-3240-4459-894c-6c2f6054b842>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-01-27"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:No ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:Unknown ;
+        ibd:hasComplicationPSC       ibd:Unknown ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/47350f8c-8e4b-4417-8938-35f7e8b95eba>
+        a              ibd:Laboratory ;
+        ibd:aLT        "24.0"^^xsd:float ;
+        ibd:aST        "30.0"^^xsd:float ;
+        ibd:albumin    "10.0"^^xsd:float ;
+        ibd:eventDate  "2015-08-27"^^xsd:date .
+
+<http://test/fbe21b0f-00a3-4a7c-ada8-9200be541845>
+        a              ibd:Laboratory ;
+        ibd:aLT        "15.0"^^xsd:float ;
+        ibd:aST        "75.0"^^xsd:float ;
+        ibd:albumin    "32.0"^^xsd:float ;
+        ibd:eventDate  "2016-02-27"^^xsd:date .
+
+<http://test/8ac5bb29-09d5-43b5-b2f0-7189f025e382>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-03-23"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Yes ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:Unknown ;
+        ibd:hasComplicationPSC       ibd:Unknown ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/a8f84e03-a085-458b-b898-38639e932551>
+        a              ibd:Laboratory ;
+        ibd:aLT        "19.0"^^xsd:float ;
+        ibd:aST        "34.0"^^xsd:float ;
+        ibd:albumin    "15.0"^^xsd:float ;
+        ibd:eventDate  "2015-01-02"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/3d15e099-f85a-4c62-9337-c2cd41216e8b>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-08-27"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:Unknown ;
+        ibd:hasComplicationEN        ibd:Unknown ;
+        ibd:hasComplicationFistula   ibd:Yes ;
+        ibd:hasComplicationPSC       ibd:Yes ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/e39f8d6f-9bd0-4607-ab45-883ec59940c1>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-04-24"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:Yes ;
+        ibd:otherSideEffects      "" .
+
+<http://test/3df21aab-487c-429e-ae78-6b4de404113d>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-01-27"^^xsd:date ;
+        ibd:pCDAI      35 .
+
+<http://test/aa58461c-245f-43df-9d5c-c78a2618bedd>
+        a                        ds:Weight ;
+        ds:weightValue           "47.0"^^xsd:float ;
+        ibd:eventDate            "2015-06-18"^^xsd:date ;
+        ibd:weightStandardScore  "0.1"^^xsd:float .
+
+<http://test/65261371-4b58-4bf2-8d6d-d37d52d60fa9>
+        a                        ds:Weight ;
+        ds:weightValue           "61.0"^^xsd:float ;
+        ibd:eventDate            "2016-01-28"^^xsd:date ;
+        ibd:weightStandardScore  "0.1"^^xsd:float .
+
+<http://test/880c3beb-7b4c-4732-abc3-9a25bbcd285b>
+        a              ibd:Serology ;
+        ibd:eventDate  "2015-01-02"^^xsd:date ;
+        ibd:hasCMV     ibd:Positive ;
+        ibd:hasEBV     ibd:Negative ;
+        ibd:hasHSV     ibd:Negative ;
+        ibd:hasVZV     ibd:Negative .
+
+<http://test/d82fb8ad-1792-41ca-9d1e-e12b1cc5b5e0>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-02-26"^^xsd:date ;
+        ibd:has6MMP    ibd:Normal ;
+        ibd:has6TGN    ibd:Normal ;
+        ibd:pCDAI      35 .
+
+<http://test/31101338-3c25-4ee0-82bc-8f3b2d2f8959>
+        a                        ds:Height ;
+        ds:heightValue           151 ;
+        ibd:eventDate            "2015-06-18"^^xsd:date ;
+        ibd:heightStandardScore  "1.07"^^xsd:float .
+
+<http://test/b914ec12-d2b2-4016-8ed3-81409db5ee9b>
+        a                        ds:Weight ;
+        ds:weightValue           "49.0"^^xsd:float ;
+        ibd:eventDate            "2015-03-23"^^xsd:date ;
+        ibd:weightStandardScore  "0.2"^^xsd:float .
+
+<http://test/0fd7b94e-a2d8-4df8-b652-8246560ab08f>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-02-26"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/6f85bd5f-788a-4058-97f7-a54d55b7c171>
+        a                             ibd:InflammatoryBowelDisease ;
+        ibd:diagnosisAge              "16.7"^^xsd:float ;
+        ibd:diagnosisDate             "2015-06-01"^^xsd:date ;
+        ibd:hasAgeGroup               ibd:10To16Years ;
+        ibd:hasCharacteristic         ibd:NotStricturingnotPenetrating , ibd:Perianal ;
+        ibd:hasClassification         ibd:CrohnsDisease ;
+        ibd:hasGrowthDefect           ibd:WithGrowthDefect ;
+        ibd:hasLocation               ibd:Ileocolon , ibd:ProximallyToLigamentOfTreitz ;
+        ibd:isClassificationDefinite  true .
+
+<http://test/2b525c33-54e0-4a99-8ba9-499757c62c2d>
+        a              ibd:Laboratory ;
+        ibd:aLT        "19.0"^^xsd:float ;
+        ibd:aST        "29.0"^^xsd:float ;
+        ibd:albumin    "12.0"^^xsd:float ;
+        ibd:eventDate  "2015-03-23"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/81076e49-70bc-4aa1-99f1-e8e8311f0580>
+        a                        ds:Weight ;
+        ds:weightValue           "70.0"^^xsd:float ;
+        ibd:eventDate            "2015-07-27"^^xsd:date ;
+        ibd:weightStandardScore  "1.7"^^xsd:float .
+
+<http://test/71c731f9-0b03-4642-b3c8-b10e786329e1>
+        a                            ibd:Immunology ;
+        ibd:eventDate                "2016-01-02"^^xsd:date ;
+        ibd:hasImmunologyANA         ibd:SlightlyPositive ;
+        ibd:hasImmunologyASCA        ibd:Negative ;
+        ibd:hasImmunologyASMA        ibd:SlightlyPositive ;
+        ibd:hasImmunologyAbpancreas  ibd:SlightlyPositive ;
+        ibd:hasImmunologyAtypANCA    ibd:Negative ;
+        ibd:hasImmunologyCANCA       ibd:Negative ;
+        ibd:hasImmunologyIntestineGobletCell
+                ibd:SlightlyPositive ;
+        ibd:hasImmunologyPANCA       ibd:SlightlyPositive ;
+        ibd:immunoglobulinG          "60.0"^^xsd:float .
+
+<http://test/a04d5c57-cd28-47b0-8e1f-31443bd682d4>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-06-01"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:Unknown ;
+        ibd:hasComplicationEN        ibd:Unknown ;
+        ibd:hasComplicationFistula   ibd:Yes ;
+        ibd:hasComplicationPSC       ibd:Unknown ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/676947d2-e86d-4586-a8da-a1ec215b662e>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2016-01-28"^^xsd:date ;
+        ibd:has6MMP    ibd:High ;
+        ibd:has6TGN    ibd:High ;
+        ibd:pCDAI      20 .
+
+<http://test/bb9b34fd-3b8b-497a-9bcf-64afa2186d18>
+        a              ibd:Laboratory ;
+        ibd:aLT        "24.0"^^xsd:float ;
+        ibd:aST        "36.0"^^xsd:float ;
+        ibd:albumin    "12.0"^^xsd:float ;
+        ibd:eventDate  "2015-07-27"^^xsd:date .
+
+<http://test/31cd7051-bc1e-4d19-9ddc-1afc0b835b18>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-04-24"^^xsd:date ;
+        ibd:pCDAI      30 .
+
+mreid:a4c0dede9b6709333e7a2be7e3203dee0477b58e
+        a                    ds:Patient ;
+        ds:datetimeBirth     "1998-10-10"^^xsd:date ;
+        ds:firstName         "Jonáš" ;
+        ds:lastName          "Nepravidelný" ;
+        ds:patientID2        "9810109876" ;
+        ds:sex               "M" ;
+		ds:address          mreid:e2715dad6fb814a44cd55d2689619467aad54872 ;
+        ibd:hasCheckup       <http://test/b3341c29-03af-4e8e-b039-8b0f3fd5919c> , <http://test/d5e754b4-ce12-42de-ba36-348274a7f220> , <http://test/b5d67784-d88d-4d03-8a68-c51fd9184844> , <http://test/75f414fc-55ae-4560-85f1-09774de2f6b8> , <http://test/7bb4c113-1221-4f88-9b18-99d48de6d9b2> , <http://test/daa7e338-1c60-4792-8521-e46af99c8623> ;
+        ibd:hasComplication  <http://test/9fbb06bb-9188-4315-9338-db7f8a8ede51> , <http://test/a04d5c57-cd28-47b0-8e1f-31443bd682d4> , <http://test/3d15e099-f85a-4c62-9337-c2cd41216e8b> , <http://test/1747ca6a-b5b8-46fe-9e5d-0d3dc2e5a128> ;
+        ibd:hasHeight        <http://test/563b30fd-04ca-4f81-85a4-558be87d6f4f> , <http://test/18fa0553-33d6-4c8f-95c6-86160822b5f6> , <http://test/d7231169-643f-4583-89a9-77da85121e6a> ;
+        ibd:hasHistology     <http://test/1e14b56b-32aa-4ee1-af17-ee5637fe98d2> ;
+        ibd:hasImmunology    <http://test/02b1b4f9-9ca3-489c-b29e-cd566c15d768> ;
+        ibd:hasInflammatoryBowelDisease
+                <http://test/6f85bd5f-788a-4058-97f7-a54d55b7c171> ;
+        ibd:hasLaboratory    <http://test/b961b50f-bbab-49df-8e46-bf9162c3d4dc> , <http://test/bb9b34fd-3b8b-497a-9bcf-64afa2186d18> , <http://test/b36c3988-f6f5-4d78-aed2-374079b21c8b> , <http://test/52132633-085c-4293-9a75-2293c5ee60c7> , <http://test/80a4948c-7f1e-4967-b1ae-d361132ea3f1> , <http://test/47350f8c-8e4b-4417-8938-35f7e8b95eba> ;
+        ibd:hasSerology      <http://test/eb3e8a69-012e-435b-b125-5c93f369fb92> ;
+        ibd:hasSideEffect    <http://test/89a7faa0-e3b5-4737-bab2-ae242ebac9ab> , <http://test/a5be30c6-6599-487b-bc0d-4443c3be54cb> , <http://test/79ebd714-a571-4795-98b2-394bdcb76a9a> , <http://test/89678d3a-1ad8-494e-b4d9-adf66d457500> , <http://test/39301f0b-d984-48d2-b2d5-cdab35e9a70c> , <http://test/bea01507-63db-406d-87cb-b52e1eb8aaad> ;
+        ibd:hasWeight        <http://test/71b4f7c2-6719-411c-a47e-ef4a8e519eae> , <http://test/81076e49-70bc-4aa1-99f1-e8e8311f0580> , <http://test/8ab35d6f-6846-48e4-85c3-18573b89211c> , <http://test/633cea51-5dda-4475-8b06-90ee777397d1> , <http://test/db05b288-eb9a-4cd8-9b91-4d9a54764e51> .
+
+<http://test/9fbb06bb-9188-4315-9338-db7f8a8ede51>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-07-14"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:Unknown ;
+        ibd:hasComplicationEN        ibd:Unknown ;
+        ibd:hasComplicationFistula   ibd:Yes ;
+        ibd:hasComplicationPSC       ibd:Yes ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/b785c419-a674-4ee9-bb1b-b84a8c6a8a34>
+        a              ibd:Laboratory ;
+        ibd:aLT        "16.0"^^xsd:float ;
+        ibd:aST        "27.0"^^xsd:float ;
+        ibd:albumin    "20.0"^^xsd:float ;
+        ibd:eventDate  "2016-01-03"^^xsd:date .
+
+<http://test/52132633-085c-4293-9a75-2293c5ee60c7>
+        a              ibd:Laboratory ;
+        ibd:aLT        "25.0"^^xsd:float ;
+        ibd:aST        "33.0"^^xsd:float ;
+        ibd:albumin    "17.0"^^xsd:float ;
+        ibd:eventDate  "2015-07-14"^^xsd:date .
+
+<http://test/eb3e8a69-012e-435b-b125-5c93f369fb92>
+        a              ibd:Serology ;
+        ibd:eventDate  "2015-06-01"^^xsd:date ;
+        ibd:hasCMV     ibd:Negative ;
+        ibd:hasEBV     ibd:Negative ;
+        ibd:hasHSV     ibd:Negative ;
+        ibd:hasVZV     ibd:Positive .
+
+<http://test/79ebd714-a571-4795-98b2-394bdcb76a9a>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-06-25"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:Yes ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/58ca9167-5474-4ae1-826c-45fda7b8c157>
+        a                        ds:Weight ;
+        ds:weightValue           "60.0"^^xsd:float ;
+        ibd:eventDate            "2016-01-05"^^xsd:date ;
+        ibd:weightStandardScore  "0.1"^^xsd:float .
+
+<http://test/b00ab62c-0524-4df1-a081-a69caa13f184>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2016-01-08"^^xsd:date ;
+        ibd:has6MMP    ibd:High ;
+        ibd:has6TGN    ibd:High ;
+        ibd:pCDAI      35 .
+
+<http://test/3483c484-f813-4e8c-9d75-617d0c01b890>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-01-02"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:Yes ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/b3341c29-03af-4e8e-b039-8b0f3fd5919c>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-07-27"^^xsd:date ;
+        ibd:has6MMP    ibd:Low ;
+        ibd:has6TGN    ibd:Low ;
+        ibd:pCDAI      55 .
+
+<http://test/53b98856-f719-4fe5-b7af-279d3af19952>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2016-02-28"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:Unknown ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:Yes ;
+        ibd:hasComplicationPSC       ibd:Yes ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/920edf2a-9739-4d94-99dd-5763d7667e87>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-01-02"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:No ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:Unknown ;
+        ibd:hasComplicationPSC       ibd:Unknown ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/981cfdfb-f22b-49ba-b062-fb3211879265>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-01-27"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:Yes ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+mreid:0faf737fe7658f1112d58e7cba081b57a41bf6e7
+        a                    ds:Patient ;
+        ds:datetimeBirth     "1999-11-10"^^xsd:date ;
+        ds:firstName         "Pavel" ;
+        ds:lastName          "Pravidelný" ;
+        ds:patientID2        "9911101234" ;
+        ds:sex               "M" ;
+		ds:address          mreid:a55b3e558dbb07afe07e657a435e6e0edccb5c84 ;
+        ibd:hasCheckup       <http://test/31cd7051-bc1e-4d19-9ddc-1afc0b835b18> , <http://test/4965dbe1-084f-4424-98b6-f7b3b2f90b00> , <http://test/80adf148-9449-4d6c-bc79-ee82884a4c41> , <http://test/9703fe7b-d475-4fde-9cce-b83e5f7f0d77> , <http://test/6c983c9f-d8aa-4b1f-af56-8bb516cda410> , <http://test/d82fb8ad-1792-41ca-9d1e-e12b1cc5b5e0> , <http://test/3df21aab-487c-429e-ae78-6b4de404113d> , <http://test/12015607-9c0f-41fd-bb09-288ff400d5a6> ;
+        ibd:hasComplication  <http://test/f0e1ab6b-47b3-4ed7-a214-b1f24c8780d6> , <http://test/2c3103f3-3240-4459-894c-6c2f6054b842> , <http://test/b77a1b9c-7d42-4af6-b38c-16fb3a47a95d> , <http://test/8ffdab14-b78e-44cd-8231-835b169a5d4b> , <http://test/fe9d69b5-c85b-4126-af35-7b4880a75c07> , <http://test/920edf2a-9739-4d94-99dd-5763d7667e87> , <http://test/025bd161-691d-4abc-b047-ee79715e9b55> , <http://test/8ac5bb29-09d5-43b5-b2f0-7189f025e382> ;
+        ibd:hasHeight        <http://test/31101338-3c25-4ee0-82bc-8f3b2d2f8959> , <http://test/7b474278-4bd8-4dc8-bad1-57b2ba07ccd8> , <http://test/1bdc8b95-3540-4048-afea-20492fcbb619> , <http://test/53706bf1-f8e7-4f44-bb91-5ce2d96fd5db> ;
+        ibd:hasHistology     <http://test/43db7762-39f7-4609-8f09-a9cccc6c31be> ;
+        ibd:hasImmunology    <http://test/d6622113-582a-423f-a599-f933359ef69b> ;
+        ibd:hasInflammatoryBowelDisease
+                <http://test/5fc1872a-aadb-40a1-aad6-3332306e72b3> ;
+        ibd:hasLaboratory    <http://test/a8f84e03-a085-458b-b898-38639e932551> , <http://test/2b525c33-54e0-4a99-8ba9-499757c62c2d> , <http://test/fd7937e9-0ccf-4647-95dc-f78e8f467327> , <http://test/24340e50-816d-46ac-a7f9-7f6c1423982a> , <http://test/fd1518e8-0e1b-4955-96db-9b0f706c7465> , <http://test/888ab290-79f3-4f53-bc32-dbfeece579dc> , <http://test/af280471-768c-4c05-b856-3bcc787944d8> , <http://test/e638495a-0966-4032-80a3-64cdfabf9a2e> ;
+        ibd:hasSerology      <http://test/880c3beb-7b4c-4732-abc3-9a25bbcd285b> ;
+        ibd:hasSideEffect    <http://test/0fd7b94e-a2d8-4df8-b652-8246560ab08f> , <http://test/981cfdfb-f22b-49ba-b062-fb3211879265> , <http://test/4e3a284c-f761-4cfd-ba4d-8e9e5cca6665> , <http://test/624ad2e8-532f-42b9-9255-293afea0671b> , <http://test/70667e19-59e3-4c7e-8c83-3e560cac558a> , <http://test/3483c484-f813-4e8c-9d75-617d0c01b890> , <http://test/e39f8d6f-9bd0-4607-ab45-883ec59940c1> , <http://test/2d2efd44-c9bf-4611-ab43-422c4abc1a61> ;
+        ibd:hasWeight        <http://test/7625ae2c-3585-413a-97c7-da8e63e68473> , <http://test/ff86300c-cd4d-46f0-804f-5d5cf957c658> , <http://test/032a17d8-9e2c-4f61-8723-2f3a9dfdfaa7> , <http://test/892cffd6-5e0a-4869-9464-b83821122d6b> , <http://test/cefd58dd-aa2e-4454-bf1f-89802afe5b91> , <http://test/b3bc8f10-d823-42c6-b5d1-ac169a543ca4> , <http://test/b914ec12-d2b2-4016-8ed3-81409db5ee9b> , <http://test/aa58461c-245f-43df-9d5c-c78a2618bedd> .
+
+<http://test/daa7e338-1c60-4792-8521-e46af99c8623>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-06-25"^^xsd:date ;
+        ibd:pCDAI      50 .
+
+<http://test/43db7762-39f7-4609-8f09-a9cccc6c31be>
+        a                              ibd:Histology ;
+        ibd:eventDate                  "2015-01-02"^^xsd:date ;
+        ibd:hasHistologyColon          ibd:InflammatoryChanges ;
+        ibd:hasHistologyDuodenum       ibd:Normal ;
+        ibd:hasHistologyEsophagus      ibd:Normal ;
+        ibd:hasHistologyStomach        ibd:Normal ;
+        ibd:hasHistologyTerminalIleum  ibd:InflammatoryChanges , ibd:Granuloma .
+
+<http://test/d6622113-582a-423f-a599-f933359ef69b>
+        a                            ibd:Immunology ;
+        ibd:eventDate                "2015-01-02"^^xsd:date ;
+        ibd:hasImmunologyANA         ibd:Unknown ;
+        ibd:hasImmunologyASCA        ibd:Negative ;
+        ibd:hasImmunologyASMA        ibd:Negative ;
+        ibd:hasImmunologyAbpancreas  ibd:Negative ;
+        ibd:hasImmunologyAtypANCA    ibd:Negative ;
+        ibd:hasImmunologyCANCA       ibd:Negative ;
+        ibd:hasImmunologyIntestineGobletCell
+                ibd:Unknown ;
+        ibd:hasImmunologyPANCA       ibd:Unknown ;
+        ibd:immunoglobulinG          "0.0"^^xsd:float .
+
+<http://test/d818accd-bdac-404e-a3cc-a483ca1ef4f2>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2016-01-28"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:Unknown ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:Yes ;
+        ibd:hasMarrowSuppression  ibd:Yes ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/5fc1872a-aadb-40a1-aad6-3332306e72b3>
+        a                             ibd:InflammatoryBowelDisease ;
+        ibd:diagnosisAge              "15.2"^^xsd:float ;
+        ibd:diagnosisDate             "2015-01-01"^^xsd:date ;
+        ibd:hasAgeGroup               ibd:10To16Years ;
+        ibd:hasCharacteristic         ibd:NotStricturingnotPenetrating , ibd:Stricturing ;
+        ibd:hasClassification         ibd:CrohnsDisease ;
+        ibd:hasGrowthDefect           ibd:WithoutGrowthDefect ;
+        ibd:hasLocation               ibd:Colon , ibd:Ileocolon , ibd:TerminalIleum ;
+        ibd:isClassificationDefinite  true .
+
+<http://test/d5e754b4-ce12-42de-ba36-348274a7f220>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-06-01"^^xsd:date ;
+        ibd:pCDAI      50 .
+
+mreid:4470a2819a640aa16dee17defa068383e062fa24
+        a                    ds:Patient ;
+        ds:datetimeBirth     "1997-09-09"^^xsd:date ;
+        ds:firstName         "Joshua" ;
+        ds:lastName          "Náhodný" ;
+        ds:patientID2        "9709095555" ;
+        ds:sex               "M" ;
+		ds:address          mreid:4e2108ffd5551f2b753fca2ead1f63b4463d08cc ;
+        ibd:hasCheckup       <http://test/676947d2-e86d-4586-a8da-a1ec215b662e> , <http://test/74151fba-fad4-4cc1-8c22-701f8d45c80f> , <http://test/12aeaaaa-471d-48f0-bf6e-0562bd6fba2e> , <http://test/b00ab62c-0524-4df1-a081-a69caa13f184> , <http://test/c009741d-856e-4cd1-a161-833c56394624> ;
+        ibd:hasComplication  <http://test/42ede67b-6ca5-4e33-ad51-890ef1712421> , <http://test/63f89132-0910-42e6-86c8-6dfe0e05b3df> , <http://test/53b98856-f719-4fe5-b7af-279d3af19952> , <http://test/04cf0834-79b5-4640-bdc0-3efd8fb515b9> ;
+        ibd:hasHeight        <http://test/f42f03b9-3d6c-4768-bf8c-26b406b9e05e> , <http://test/129a182b-c471-45dc-8c07-137d4bc05917> , <http://test/10af04f8-a18b-420c-a94b-80614a7a3c27> ;
+        ibd:hasHistology     <http://test/85459f55-6e96-4158-bf4b-f3543d58b6f0> ;
+        ibd:hasImmunology    <http://test/71c731f9-0b03-4642-b3c8-b10e786329e1> ;
+        ibd:hasInflammatoryBowelDisease
+                <http://test/cdca1298-9e7c-4c5a-912c-71f782efd034> ;
+        ibd:hasLaboratory    <http://test/b785c419-a674-4ee9-bb1b-b84a8c6a8a34> , <http://test/03ac34f9-5753-4dee-bf7e-2a10a2677c18> , <http://test/0b75d866-f104-4f9f-b264-947b430b6866> , <http://test/beafe68d-d38f-48d4-b86e-cd40e23db0de> , <http://test/06d33bdb-6dcd-4858-8adf-89daaddbc44b> , <http://test/fbe21b0f-00a3-4a7c-ada8-9200be541845> ;
+        ibd:hasSerology      <http://test/11b74e9c-e0f8-40e2-aa56-7eba76dc67ac> ;
+        ibd:hasSideEffect    <http://test/d818accd-bdac-404e-a3cc-a483ca1ef4f2> , <http://test/68661f67-9dc8-4b22-a9ac-df103917da1a> , <http://test/522e561d-5ff1-4703-8d45-eb7976029a2a> , <http://test/42fc2241-bcb1-4b55-90cb-98f103f85053> ;
+        ibd:hasWeight        <http://test/58ca9167-5474-4ae1-826c-45fda7b8c157> , <http://test/4922ef45-b765-4b02-afc0-9a5f466b1128> , <http://test/65261371-4b58-4bf2-8d6d-d37d52d60fa9> .
+
+<http://test/7b474278-4bd8-4dc8-bad1-57b2ba07ccd8>
+        a                        ds:Height ;
+        ds:heightValue           150 ;
+        ibd:eventDate            "2015-01-02"^^xsd:date ;
+        ibd:heightStandardScore  "1.1"^^xsd:float .
+
+<http://test/4e3a284c-f761-4cfd-ba4d-8e9e5cca6665>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2016-01-05"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:Yes ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/e638495a-0966-4032-80a3-64cdfabf9a2e>
+        a              ibd:Laboratory ;
+        ibd:aLT        "24.0"^^xsd:float ;
+        ibd:aST        "30.0"^^xsd:float ;
+        ibd:albumin    "15.0"^^xsd:float ;
+        ibd:eventDate  "2016-01-05"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/a5be30c6-6599-487b-bc0d-4443c3be54cb>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-07-31"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:Yes ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:Yes ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/d7231169-643f-4583-89a9-77da85121e6a>
+        a                        ds:Height ;
+        ds:heightValue           160 ;
+        ibd:eventDate            "2015-06-01"^^xsd:date ;
+        ibd:heightStandardScore  "1.1"^^xsd:float .
+
+<http://test/4922ef45-b765-4b02-afc0-9a5f466b1128>
+        a                        ds:Weight ;
+        ds:weightValue           "60.0"^^xsd:float ;
+        ibd:eventDate            "2016-01-08"^^xsd:date ;
+        ibd:weightStandardScore  "0.1"^^xsd:float .
+
+<http://test/db05b288-eb9a-4cd8-9b91-4d9a54764e51>
+        a                        ds:Weight ;
+        ds:weightValue           "60.0"^^xsd:float ;
+        ibd:eventDate            "2015-06-01"^^xsd:date ;
+        ibd:weightStandardScore  "1.2"^^xsd:float .
+
+<http://test/2d2efd44-c9bf-4611-ab43-422c4abc1a61>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-09-11"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/12aeaaaa-471d-48f0-bf6e-0562bd6fba2e>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2016-01-16"^^xsd:date ;
+        ibd:has6MMP    ibd:Normal ;
+        ibd:pCDAI      35 .
+
+<http://test/f42f03b9-3d6c-4768-bf8c-26b406b9e05e>
+        a                        ds:Height ;
+        ds:heightValue           170 ;
+        ibd:eventDate            "2016-01-08"^^xsd:date ;
+        ibd:heightStandardScore  "-0.1"^^xsd:float .
+
+<http://test/7bb4c113-1221-4f88-9b18-99d48de6d9b2>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-08-27"^^xsd:date ;
+        ibd:pCDAI      45 .
+
+<http://test/563b30fd-04ca-4f81-85a4-558be87d6f4f>
+        a                        ds:Height ;
+        ds:heightValue           162 ;
+        ibd:eventDate            "2015-07-14"^^xsd:date ;
+        ibd:heightStandardScore  "1.1"^^xsd:float .
+
+<http://test/f0e1ab6b-47b3-4ed7-a214-b1f24c8780d6>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-04-24"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Yes ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:Unknown ;
+        ibd:hasComplicationPSC       ibd:Unknown ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/10af04f8-a18b-420c-a94b-80614a7a3c27>
+        a                        ds:Height ;
+        ds:heightValue           170 ;
+        ibd:eventDate            "2016-01-28"^^xsd:date ;
+        ibd:heightStandardScore  "-0.1"^^xsd:float .
+
+<http://test/80a4948c-7f1e-4967-b1ae-d361132ea3f1>
+        a              ibd:Laboratory ;
+        ibd:aLT        "29.0"^^xsd:float ;
+        ibd:aST        "38.0"^^xsd:float ;
+        ibd:albumin    "19.0"^^xsd:float ;
+        ibd:eventDate  "2015-06-01"^^xsd:date .
+
+<http://test/53706bf1-f8e7-4f44-bb91-5ce2d96fd5db>
+        a                        ds:Height ;
+        ds:heightValue           150 ;
+        ibd:eventDate            "2015-02-26"^^xsd:date ;
+        ibd:heightStandardScore  "1.08"^^xsd:float .
+
+<http://test/03ac34f9-5753-4dee-bf7e-2a10a2677c18>
+        a              ibd:Laboratory ;
+        ibd:aLT        "36.0"^^xsd:float ;
+        ibd:aST        "24.0"^^xsd:float ;
+        ibd:albumin    "75.0"^^xsd:float ;
+        ibd:eventDate  "2016-01-28"^^xsd:date .
+
+<http://test/b5d67784-d88d-4d03-8a68-c51fd9184844>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-07-31"^^xsd:date ;
+        ibd:has6MMP    ibd:Normal ;
+        ibd:has6TGN    ibd:Low ;
+        ibd:pCDAI      50 .
+
+<http://test/89a7faa0-e3b5-4737-bab2-ae242ebac9ab>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-06-01"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:Yes ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/12015607-9c0f-41fd-bb09-288ff400d5a6>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2015-01-02"^^xsd:date ;
+        ibd:pCDAI      40 .
+
+<http://test/b77a1b9c-7d42-4af6-b38c-16fb3a47a95d>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-02-26"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Yes ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:Unknown ;
+        ibd:hasComplicationPSC       ibd:Unknown ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/24340e50-816d-46ac-a7f9-7f6c1423982a>
+        a              ibd:Laboratory ;
+        ibd:aLT        "22.0"^^xsd:float ;
+        ibd:aST        "31.0"^^xsd:float ;
+        ibd:albumin    "17.0"^^xsd:float ;
+        ibd:eventDate  "2015-01-27"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/cdca1298-9e7c-4c5a-912c-71f782efd034>
+        a                             ibd:InflammatoryBowelDisease ;
+        ibd:diagnosisAge              "19.0"^^xsd:float ;
+        ibd:diagnosisDate             "2016-01-01"^^xsd:date ;
+        ibd:hasAgeGroup               ibd:17To40Years ;
+        ibd:hasCharacteristic         ibd:Penetrating ;
+        ibd:hasClassification         ibd:CrohnsDisease ;
+        ibd:hasGrowthDefect           ibd:WithGrowthDefect ;
+        ibd:hasLocation               ibd:Colon , ibd:Ileocolon , ibd:ProximallyToLigamentOfTreitz ;
+        ibd:isClassificationDefinite  true .
+
+<http://test/624ad2e8-532f-42b9-9255-293afea0671b>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-03-23"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:Yes ;
+        ibd:hasNausea             ibd:Yes ;
+        ibd:otherSideEffects      "" .
+
+<http://test/68661f67-9dc8-4b22-a9ac-df103917da1a>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2016-01-08"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:Yes ;
+        ibd:hasNausea             ibd:Unknown ;
+        ibd:otherSideEffects      "" .
+
+<http://test/06d33bdb-6dcd-4858-8adf-89daaddbc44b>
+        a              ibd:Laboratory ;
+        ibd:aLT        "26.0"^^xsd:float ;
+        ibd:aST        "33.0"^^xsd:float ;
+        ibd:albumin    "26.0"^^xsd:float ;
+        ibd:eventDate  "2016-01-08"^^xsd:date .
+
+<http://test/74151fba-fad4-4cc1-8c22-701f8d45c80f>
+        a              ibd:Checkup ;
+        ibd:eventDate  "2016-02-28"^^xsd:date ;
+        ibd:has6MMP    ibd:High ;
+        ibd:has6TGN    ibd:Normal ;
+        ibd:pCDAI      35 .
+
+<http://test/70667e19-59e3-4c7e-8c83-3e560cac558a>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2015-06-18"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:No ;
+        ibd:hasElevatedLPS        ibd:No ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:No ;
+        ibd:otherSideEffects      "" .
+
+<http://test/0b75d866-f104-4f9f-b264-947b430b6866>
+        a              ibd:Laboratory ;
+        ibd:aLT        "32.0"^^xsd:float ;
+        ibd:aST        "16.0"^^xsd:float ;
+        ibd:albumin    "62.0"^^xsd:float ;
+        ibd:eventDate  "2015-12-22"^^xsd:date .
+
+<http://test/fd1518e8-0e1b-4955-96db-9b0f706c7465>
+        a              ibd:Laboratory ;
+        ibd:aLT        "22.0"^^xsd:float ;
+        ibd:aST        "23.0"^^xsd:float ;
+        ibd:albumin    "14.0"^^xsd:float ;
+        ibd:eventDate  "2015-04-24"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/b961b50f-bbab-49df-8e46-bf9162c3d4dc>
+        a              ibd:Laboratory ;
+        ibd:aLT        "29.0"^^xsd:float ;
+        ibd:aST        "38.0"^^xsd:float ;
+        ibd:albumin    "17.0"^^xsd:float ;
+        ibd:eventDate  "2015-06-25"^^xsd:date .
+
+<http://test/11b74e9c-e0f8-40e2-aa56-7eba76dc67ac>
+        a              ibd:Serology ;
+        ibd:eventDate  "2016-01-02"^^xsd:date ;
+        ibd:hasCMV     ibd:Positive ;
+        ibd:hasEBV     ibd:Negative ;
+        ibd:hasHSV     ibd:Negative ;
+        ibd:hasVZV     ibd:Positive .
+
+<http://test/63f89132-0910-42e6-86c8-6dfe0e05b3df>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2016-01-08"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:Unknown ;
+        ibd:hasComplicationEN        ibd:Yes ;
+        ibd:hasComplicationFistula   ibd:Yes ;
+        ibd:hasComplicationPSC       ibd:No ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/af280471-768c-4c05-b856-3bcc787944d8>
+        a              ibd:Laboratory ;
+        ibd:aLT        "23.0"^^xsd:float ;
+        ibd:aST        "30.0"^^xsd:float ;
+        ibd:albumin    "17.0"^^xsd:float ;
+        ibd:eventDate  "2015-02-26"^^xsd:date ;
+        ibd:hasTPMT    ibd:1_1 .
+
+<http://test/42ede67b-6ca5-4e33-ad51-890ef1712421>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2016-01-16"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Unknown ;
+        ibd:hasComplicationDM        ibd:Unknown ;
+        ibd:hasComplicationEN        ibd:Unknown ;
+        ibd:hasComplicationFistula   ibd:Yes ;
+        ibd:hasComplicationPSC       ibd:Yes ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/1bdc8b95-3540-4048-afea-20492fcbb619>
+        a                        ds:Height ;
+        ds:heightValue           152 ;
+        ibd:eventDate            "2016-01-05"^^xsd:date ;
+        ibd:heightStandardScore  "1.07"^^xsd:float .
+
+<http://test/025bd161-691d-4abc-b047-ee79715e9b55>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2015-06-18"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:No ;
+        ibd:hasComplicationAT        ibd:No ;
+        ibd:hasComplicationAbscess   ibd:No ;
+        ibd:hasComplicationCS        ibd:No ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:No ;
+        ibd:hasComplicationFistula   ibd:No ;
+        ibd:hasComplicationPSC       ibd:No ;
+        ibd:hasComplicationStenosis  ibd:No ;
+        ibd:otherComplication        "" .
+
+<http://test/04cf0834-79b5-4640-bdc0-3efd8fb515b9>
+        a                            ibd:Complication ;
+        ibd:eventDate                "2016-01-05"^^xsd:date ;
+        ibd:hasComplicationAIH       ibd:Unknown ;
+        ibd:hasComplicationAT        ibd:Unknown ;
+        ibd:hasComplicationAbscess   ibd:Unknown ;
+        ibd:hasComplicationCS        ibd:Yes ;
+        ibd:hasComplicationDM        ibd:No ;
+        ibd:hasComplicationEN        ibd:Unknown ;
+        ibd:hasComplicationFistula   ibd:Unknown ;
+        ibd:hasComplicationPSC       ibd:Unknown ;
+        ibd:hasComplicationStenosis  ibd:Unknown ;
+        ibd:otherComplication        "" .
+
+<http://test/18fa0553-33d6-4c8f-95c6-86160822b5f6>
+        a                        ds:Height ;
+        ds:heightValue           162 ;
+        ibd:eventDate            "2015-07-27"^^xsd:date ;
+        ibd:heightStandardScore  "1.0"^^xsd:float .
+
+<http://test/42fc2241-bcb1-4b55-90cb-98f103f85053>
+        a                         ibd:SideEffect ;
+        ibd:eventDate             "2016-01-16"^^xsd:date ;
+        ibd:hasAbdominalPain      ibd:No ;
+        ibd:hasElevatedALT        ibd:No ;
+        ibd:hasElevatedAST        ibd:Yes ;
+        ibd:hasElevatedLPS        ibd:Yes ;
+        ibd:hasMarrowSuppression  ibd:No ;
+        ibd:hasNausea             ibd:Unknown ;
+        ibd:otherSideEffects      "" .
