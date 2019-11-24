@@ -21,4 +21,23 @@ public final class Utils {
      * @return base part of uri - before last occurrence of '/'
      */
     public static String getBaseFromURI(String uri) { return uri.substring(0, uri.lastIndexOf("/") + 1);}
+
+    /**
+     * Return well formatted object name - either last part of uri
+     * or part the value before schema specification.
+     * If name of object is empty, do nothing
+     * @param object String representation of object
+     * @return well formatted object name
+     */
+    public static String getFormattedObjectName(String object) {
+        if (object.isEmpty()) {
+            return object;
+        }
+        else if (object.startsWith("http")) {
+            return getLastPartFromURI(object);
+        }
+        else {
+            return object.substring(0, object.indexOf('^'));
+        }
+    }
 }

@@ -66,15 +66,10 @@ public class RdfService {
         //add to set, so there are no duplicates
         Set<RdfType> rdfTypes = new HashSet<>();
         for (Resource resource : model.listSubjects().toList()) {
-            for (Statement statement : resource.listProperties().toList()) {
-                Property predicate = statement.getPredicate();
-                RDFNode object = statement.getObject();
-                if (predicate.getURI().equals(RDF_TYPE.toString())) {
-                    RdfType type = new RdfType(Utils.getLastPartFromURI(object.toString()));
-                    type.generateProperties(resource);
-                    rdfTypes.add(type);
-                }
-            }
+            String resourceTypeString = resource.getProperty(model.getProperty(RDF_TYPE.toString())).getObject().toString();
+            RdfType type = new RdfType(Utils.getLastPartFromURI(resourceTypeString));
+            type.generateProperties(resource);
+            rdfTypes.add(type);
         }
         sortedRdfTypes = new ArrayList<>(rdfTypes);
         Collections.sort(sortedRdfTypes);
@@ -115,7 +110,7 @@ public class RdfService {
                         //append predicate name and object name to subject new name
                         sb.append(selectedPredicate.getPredicate().getName())
                                 .append("-")
-                                .append(Utils.getLastPartFromURI(statement.getObject().toString()))
+                                .append(Utils.getFormattedObjectName(statement.getObject().toString()))
                                 .append("-");
                         rename = true;
                     }
@@ -156,7 +151,6 @@ public class RdfService {
     private boolean isRenamedModelOK() {
         List<Resource> modelResources = model.listSubjects().toList();
         List<Resource> renamedModelResources = renamedModel.listSubjects().toList();
-        System.out.println(modelResources.size() + " " + renamedModelResources.size());
 
         if (modelResources.size() != renamedModelResources.size()) return false;
         int modelResourcesTriplesCount = 0;
@@ -165,7 +159,6 @@ public class RdfService {
             modelResourcesTriplesCount += modelResources.get(i).listProperties().toList().size();
             renamedModelResourcesTriplesCount += renamedModelResources.get(i).listProperties().toList().size();
         }
-        System.out.println(modelResourcesTriplesCount + " " + renamedModelResourcesTriplesCount);
         if(modelResourcesTriplesCount != renamedModelResourcesTriplesCount) {
             return false;
         }

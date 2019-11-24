@@ -67,7 +67,7 @@ public class RdfController {
             renamedModel.write(response.getOutputStream(), rdfFormat.getLang());
             response.setContentType(rdfFormat.getContentType());
             response.setHeader("Content-Disposition", "attachment; filename=\"renamed." + rdfFormat.getExtension() + "\"");
-            //response.flushBuffer();
+            response.flushBuffer();
         } catch (IOException ex) {
             throw new RuntimeException("IOError writing file to output stream");
         }
