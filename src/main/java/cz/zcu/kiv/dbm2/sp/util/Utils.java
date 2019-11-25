@@ -31,13 +31,16 @@ public final class Utils {
      */
     public static String getFormattedObjectName(String object) {
         if (object.isEmpty()) {
-            return object;
+            return "";
         }
         else if (object.startsWith("http")) {
             return getLastPartFromURI(object);
         }
-        else {
+        else if (object.contains("^^")){
             return object.substring(0, object.indexOf('^'));
+        }
+        else {
+            return object;
         }
     }
 }
