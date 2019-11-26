@@ -5,11 +5,13 @@ import java.util.UUID;
 public class RdfPredicate implements Comparable {
 
     private String name;
+    private String exampleObject;
     private boolean selected;
     private String id;
 
-    public RdfPredicate(String name, boolean selected) {
+    public RdfPredicate(String name, String exampleObject, boolean selected) {
         this.name = name;
+        this.exampleObject = exampleObject;
         this.selected = selected;
         this.id = UUID.randomUUID().toString();
     }
@@ -20,6 +22,14 @@ public class RdfPredicate implements Comparable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getExampleObject() {
+        return exampleObject;
+    }
+
+    public void setExampleObject(String exampleObject) {
+        this.exampleObject = exampleObject;
     }
 
     public boolean getSelected() {

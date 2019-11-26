@@ -1,5 +1,6 @@
 package cz.zcu.kiv.dbm2.sp.model;
 
+import cz.zcu.kiv.dbm2.sp.util.Utils;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 
@@ -24,7 +25,8 @@ public class RdfType implements Comparable {
      */
     public void generateProperties(Resource resource) {
         for (Statement statement : resource.listProperties().toList()) {
-            RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(), false);
+            RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(),
+                    Utils.getFormattedObjectName(statement.getObject().toString()), false);
             properties.add(predicate);
         }
         Collections.sort(properties);
