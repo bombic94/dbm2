@@ -63,36 +63,60 @@ public class RdfService {
     public List<RdfType> generateTypes(MultipartFile file) throws IOException {
         model = this.processModelFromFile(file);
 
-        sortedRdfTypes = new ArrayList<>();
-        //0 depth
+        List<RdfType> types = new ArrayList<>();
         for (Resource resource : model.listSubjects().toList()) {
             String resourceTypeString = getResourceType(resource);
             if (resourceTypeString == null || resourceTypeString.isEmpty()) {
                 continue;
             }
             RdfType type = new RdfType(Utils.getLastPartFromURI(resourceTypeString));
-            if (sortedRdfTypes.contains(type)) continue;
 
             for (Statement statement : resource.listProperties().toList()) {
-                RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(),
-                        Utils.getFormattedObjectName(statement.getObject().toString()), false, false);
-                //do not add predicates that were added by previous subject
-                if (sortedRdfTypes.contains(type)) {
-                    type.addProperty(predicate);
-                } else { //add multiple predicates within one subject
-                    type.addPropertyNoCheck(predicate);
-                }
+                addPredicatesRecursively("", type, statement, 0);
             }
-            sortedRdfTypes.add(type);
+            types.add(type);
         }
 
         //group multiple predicates within one subject
-        for (RdfType type : sortedRdfTypes) {
+        for (RdfType type : types) {
+            Collections.sort(type.getProperties());
             type.groupPredicates();
         }
 
+        //remove duplicates, if duplicate contains more predicates, add them to original
+        sortedRdfTypes = new ArrayList<>();
+        for (RdfType type : types) {
+            if (!sortedRdfTypes.contains(type)) {
+                sortedRdfTypes.add(type);
+            } else {
+                RdfType addedType = sortedRdfTypes.get(sortedRdfTypes.indexOf(type));
+                for (RdfPredicate predicate : type.getProperties()) {
+                    if (!addedType.getProperties().contains(predicate)) {
+                        addedType.getProperties().add(predicate);
+                    }
+                }
+            }
+        }
+        //sort types and predicates alphabetically
+        for (RdfType type : sortedRdfTypes) {
+            Collections.sort(type.getProperties());
+        }
         Collections.sort(sortedRdfTypes);
         return sortedRdfTypes;
+    }
+
+    private void addPredicatesRecursively(String prefix, RdfType type, Statement statement, int depth) {
+        //max depth 2, go deeper recursively
+        if (depth <= 1 && statement.getObject().isResource()) {
+            for (Statement st : statement.getObject().asResource().listProperties().toList()) {
+                addPredicatesRecursively(prefix + statement.getPredicate().getLocalName() + ":", type, st, depth + 1);
+            }
+        }
+        RdfPredicate predicate = new RdfPredicate(prefix + statement.getPredicate().getLocalName(),
+                Utils.getFormattedObjectName(statement.getObject().toString()), false, false);
+
+        type.addProperty(predicate);
+
     }
 
     /**

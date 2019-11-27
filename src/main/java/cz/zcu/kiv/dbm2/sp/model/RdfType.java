@@ -113,13 +113,7 @@ public class RdfType implements Comparable {
     }
 
     public void addProperty(RdfPredicate predicate) {
-        if (properties.contains(predicate)) {
-            return;
-        }
         properties.add(predicate);
     }
 
-    public void addPropertyNoCheck(RdfPredicate predicate) {
-        properties.add(predicate);
-    }
 }
