@@ -23,15 +23,15 @@ public class RdfType implements Comparable {
     /**
      * For each predicate in subject, generate object holding predicate info
      */
-    public void generateProperties(Resource resource) {
-        for (Statement statement : resource.listProperties().toList()) {
-            RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(),
-                    Utils.getFormattedObjectName(statement.getObject().toString()), false);
-            properties.add(predicate);
-        }
-        Collections.sort(properties);
-        groupPredicates();
-    }
+//    public void generateProperties(Resource resource) {
+//        for (Statement statement : resource.listProperties().toList()) {
+//            RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(),
+//                    Utils.getFormattedObjectName(statement.getObject().toString()), false);
+//            properties.add(predicate);
+//        }
+//        Collections.sort(properties);
+//        groupPredicates();
+//    }
 
     /**
      * If subject contains multiple same predicates with different objects, group it to one predicate with count
@@ -53,13 +53,15 @@ public class RdfType implements Comparable {
         for (Map.Entry item : itemCount.entrySet()) {
             for (RdfPredicate property : properties) {
                 if (property.getName().equals(item.getKey())) {
-                    property.setName(property.getName() + "-count:" + item.getValue());
+                    property.setExampleObject("count:" + item.getValue());
+                    //property.setName(property.getName() + "-count:" + item.getValue());
+                    property.setMultiple(true);
                     break;
                 }
             }
         }
         //remove all the other occurrences
-        properties.removeIf(i -> itemCount.containsKey(i.getName()));
+        properties.removeIf(i -> (itemCount.containsKey(i.getName()) && i.getMultiple() == false));
     }
 
     public List<RdfPredicate> getProperties() {
@@ -114,6 +116,10 @@ public class RdfType implements Comparable {
         if (properties.contains(predicate)) {
             return;
         }
+        properties.add(predicate);
+    }
+
+    public void addPropertyNoCheck(RdfPredicate predicate) {
         properties.add(predicate);
     }
 }

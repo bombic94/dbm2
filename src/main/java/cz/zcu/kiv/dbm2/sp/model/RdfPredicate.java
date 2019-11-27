@@ -8,11 +8,13 @@ public class RdfPredicate implements Comparable {
     private String exampleObject;
     private boolean selected;
     private String id;
+    private boolean multiple;
 
-    public RdfPredicate(String name, String exampleObject, boolean selected) {
+    public RdfPredicate(String name, String exampleObject, boolean selected, boolean multiple) {
         this.name = name;
         this.exampleObject = exampleObject;
         this.selected = selected;
+        this.multiple = multiple;
         this.id = UUID.randomUUID().toString();
     }
 
@@ -38,6 +40,14 @@ public class RdfPredicate implements Comparable {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
+    }
+
+    public boolean getMultiple() {
+        return multiple;
+    }
+
+    public void setMultiple(boolean multiple) {
+        this.multiple = multiple;
     }
 
     public String getId() {

@@ -75,12 +75,18 @@ public class RdfService {
 
             for (Statement statement : resource.listProperties().toList()) {
                 RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(),
-                        Utils.getFormattedObjectName(statement.getObject().toString()), false);
-                type.addProperty(predicate);
+                        Utils.getFormattedObjectName(statement.getObject().toString()), false, false);
+                //do not add predicates that were added by previous subject
+                if (sortedRdfTypes.contains(type)) {
+                    type.addProperty(predicate);
+                } else { //add multiple predicates within one subject
+                    type.addPropertyNoCheck(predicate);
+                }
             }
             sortedRdfTypes.add(type);
         }
 
+        //group multiple predicates within one subject
         for (RdfType type : sortedRdfTypes) {
             type.groupPredicates();
         }
@@ -124,10 +130,21 @@ public class RdfService {
                     if (statement.getPredicate().getLocalName().equals(selectedPredicate.getPredicate().getName())
                             && Utils.getLastPartFromURI(resourceTypeString).equals(selectedPredicate.getType().getName())) {
                         //append predicate name and object name to subject new name
-                        sb.append(selectedPredicate.getPredicate().getName())
-                                .append("-")
-                                .append(Utils.getFormattedObjectName(statement.getObject().toString()))
-                                .append("-");
+
+                        if (selectedPredicate.getPredicate().getMultiple() == true) {
+                            if (sb.toString().contains(selectedPredicate.getPredicate().getExampleObject())) {
+                                continue;
+                            }
+                            sb.append(selectedPredicate.getPredicate().getName())
+                                    .append("-")
+                                    .append(selectedPredicate.getPredicate().getExampleObject())
+                                    .append("-");
+                        } else {
+                            sb.append(selectedPredicate.getPredicate().getName())
+                                    .append("-")
+                                    .append(Utils.getFormattedObjectName(statement.getObject().toString()))
+                                    .append("-");
+                        }
                         rename = true;
                     }
                     //if includeOrigId is checked for this subject type, add original resource ID
