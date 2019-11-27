@@ -63,18 +63,28 @@ public class RdfService {
     public List<RdfType> generateTypes(MultipartFile file) throws IOException {
         model = this.processModelFromFile(file);
 
-        //add to set, so there are no duplicates
-        Set<RdfType> rdfTypes = new HashSet<>();
+        sortedRdfTypes = new ArrayList<>();
+        //0 depth
         for (Resource resource : model.listSubjects().toList()) {
             String resourceTypeString = getResourceType(resource);
             if (resourceTypeString == null || resourceTypeString.isEmpty()) {
                 continue;
             }
             RdfType type = new RdfType(Utils.getLastPartFromURI(resourceTypeString));
-            type.generateProperties(resource);
-            rdfTypes.add(type);
+            if (sortedRdfTypes.contains(type)) continue;
+
+            for (Statement statement : resource.listProperties().toList()) {
+                RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(),
+                        Utils.getFormattedObjectName(statement.getObject().toString()), false);
+                type.addProperty(predicate);
+            }
+            sortedRdfTypes.add(type);
         }
-        sortedRdfTypes = new ArrayList<>(rdfTypes);
+
+        for (RdfType type : sortedRdfTypes) {
+            type.groupPredicates();
+        }
+
         Collections.sort(sortedRdfTypes);
         return sortedRdfTypes;
     }

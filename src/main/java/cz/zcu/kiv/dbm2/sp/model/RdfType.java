@@ -37,7 +37,7 @@ public class RdfType implements Comparable {
      * If subject contains multiple same predicates with different objects, group it to one predicate with count
      * of occurrences.
      */
-    private void groupPredicates() {
+    public void groupPredicates() {
         Map<String, Integer> itemCount = new HashMap<>();
         for (int i = 0; i < properties.size() - 1; i++) {
             for (int j = i + 1; j < properties.size(); j++) {
@@ -108,5 +108,12 @@ public class RdfType implements Comparable {
             return this.getName().compareTo(((RdfType) o).getName());
         }
         return 0;
+    }
+
+    public void addProperty(RdfPredicate predicate) {
+        if (properties.contains(predicate)) {
+            return;
+        }
+        properties.add(predicate);
     }
 }
