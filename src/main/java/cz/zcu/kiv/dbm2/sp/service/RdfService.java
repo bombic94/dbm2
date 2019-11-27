@@ -66,7 +66,10 @@ public class RdfService {
         //add to set, so there are no duplicates
         Set<RdfType> rdfTypes = new HashSet<>();
         for (Resource resource : model.listSubjects().toList()) {
-            String resourceTypeString = resource.getProperty(model.getProperty(RDF_TYPE.toString())).getObject().toString();
+            String resourceTypeString = getResourceType(resource);
+            if (resourceTypeString == null || resourceTypeString.isEmpty()) {
+                continue;
+            }
             RdfType type = new RdfType(Utils.getLastPartFromURI(resourceTypeString));
             type.generateProperties(resource);
             rdfTypes.add(type);
@@ -98,7 +101,10 @@ public class RdfService {
             String uriBase = Utils.getBaseFromURI(resource.getURI());
             sb.append(uriBase);
 
-            String resourceTypeString = resource.getProperty(renamedModel.getProperty(RDF_TYPE.toString())).getObject().toString();
+            String resourceTypeString = getResourceType(resource);
+            if (resourceTypeString == null || resourceTypeString.isEmpty()) {
+                continue;
+            }
             //for each predicate in subject
             for (Statement statement : resource.listProperties().toList()) {
                 //for each selected predicate for renaming
@@ -192,6 +198,19 @@ public class RdfService {
                 }
             }
         }
+    }
+
+    private String getResourceType(Resource resource) {
+        Property typeURI = model.getProperty(RDF_TYPE.toString());
+        Statement statement = resource.getProperty(typeURI);
+        if (statement == null) {
+            return null;
+        }
+        Object object = statement.getObject();
+        if (object == null) {
+            return null;
+        }
+        return object.toString();
     }
 
     public Model getModel() {
