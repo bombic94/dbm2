@@ -6,13 +6,16 @@ import cz.zcu.kiv.dbm2.sp.model.RdfType;
 import cz.zcu.kiv.dbm2.sp.model.SelectedPredicate;
 import cz.zcu.kiv.dbm2.sp.util.Utils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.jena.graph.Graph;
+import org.apache.jena.graph.Node;
+import org.apache.jena.graph.Triple;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.util.ResourceUtils;
+import org.apache.jena.reasoner.InfGraph;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,9 +23,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import static org.apache.jena.rdfxml.xmlinput.impl.Names.RDF_TYPE;
 
@@ -35,6 +38,8 @@ public class RdfService {
     private List<SelectedPredicate> selectedPredicates;
     private List<RdfType> sortedRdfTypes;
     private RdfFormat rdfFormat;
+
+    HashMap<String, List<String>> renamingMap;
 
     /**
      * Create RDF model from input file
@@ -126,9 +131,11 @@ public class RdfService {
      * @return
      * @throws IOException
      */
-    public String renameModel(String[] includeOrigId, String[] selectedProperties) throws IOException {
+    public void renameModel(String[] includeOrigId, String[] selectedProperties) {
         //create clear model
         renamedModel = ModelFactory.createDefaultModel().add(model);
+        //clear renaming map
+        renamingMap = new HashMap<>();
         //mark selected for renaming
         markSelectedForRenaming(selectedProperties);
 
@@ -190,13 +197,9 @@ public class RdfService {
                 else {
                     sb.setLength(sb.length() - 1);
                 }
-                ResourceUtils.renameResource(resource, sb.toString());
+                renameResource(resource, sb.toString());
             }
         }
-        if (!isRenamedModelOK()) {
-            return "Nodes in model do not have unique name! Select different properties for renaming";
-        }
-        return "OK";
     }
 
     /**
@@ -270,6 +273,89 @@ public class RdfService {
         return object.toString();
     }
 
+    /**
+     * Rename resource - method is the same as in ResourceUtils, with enhanced logging,
+     * so user can confirm all changes before downloading the file
+     * @param old old resource
+     * @param uri new resource
+     * @return
+     */
+    public Resource renameResource(Resource old, String uri) {
+
+        String oldURI = old.getURI();
+        if (oldURI != null && oldURI.equals(uri)) {
+            return old;
+        } else {
+            Node resAsNode = old.asNode();
+            Model model = old.getModel();
+            Graph graph = model.getGraph();
+            Graph rawGraph = graph instanceof InfGraph ? ((InfGraph)graph).getRawGraph() : graph;
+            Resource newRes = model.createResource(uri);
+            Node newResAsNode = newRes.asNode();
+            boolean changeOccured = false;
+            List<Triple> triples = new ArrayList(1000);
+            boolean onFirstIterator = true;
+            ExtendedIterator it = rawGraph.find(resAsNode, Node.ANY, Node.ANY);
+
+            try {
+                if (!it.hasNext()) {
+                    it.close();
+                    onFirstIterator = false;
+                    it = rawGraph.find(Node.ANY, Node.ANY, resAsNode);
+                }
+
+                changeOccured = it.hasNext();
+
+                while(it.hasNext()) {
+                    for(int count = 0; it.hasNext() && count < 1000; ++count) {
+                        triples.add((Triple) it.next());
+                    }
+
+                    it.close();
+                    Iterator var14 = triples.iterator();
+
+                    Triple t;
+                    while(var14.hasNext()) {
+                        t = (Triple)var14.next();
+                        rawGraph.delete(t);
+                    }
+
+                    var14 = triples.iterator();
+
+                    while(var14.hasNext()) {
+                        t = (Triple)var14.next();
+                        Node oldS = t.getSubject();
+                        Node oldO = t.getObject();
+                        Node newS = oldS.equals(resAsNode) ? newResAsNode : oldS;
+                        Node newO = oldO.equals(resAsNode) ? newResAsNode : oldO;
+                        rawGraph.add(Triple.create(newS, t.getPredicate(), newO));
+                    }
+
+                    triples.clear();
+                    it = onFirstIterator ? rawGraph.find(resAsNode, Node.ANY, Node.ANY) : rawGraph.find(Node.ANY, Node.ANY, resAsNode);
+                    if (onFirstIterator && !it.hasNext()) {
+                        it.close();
+                        onFirstIterator = false;
+                        it = rawGraph.find(Node.ANY, Node.ANY, resAsNode);
+                    }
+                }
+            } finally {
+                it.close();
+            }
+
+            if (rawGraph != graph && changeOccured) {
+                ((InfGraph)graph).rebind();
+            }
+            if(renamingMap.containsKey(uri)) {
+                renamingMap.get(uri).add(oldURI);
+            } else {
+                renamingMap.put(uri, new ArrayList<>());
+                renamingMap.get(uri).add(oldURI);
+            }
+            return newRes;
+        }
+    }
+
     public Model getModel() {
         return model;
     }
@@ -284,5 +370,9 @@ public class RdfService {
 
     public RdfFormat getRdfFormat() {
         return rdfFormat;
+    }
+
+    public HashMap<String, List<String>> getRenamingMap() {
+        return renamingMap;
     }
 }

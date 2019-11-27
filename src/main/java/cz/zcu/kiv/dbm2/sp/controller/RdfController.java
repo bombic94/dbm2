@@ -47,13 +47,24 @@ public class RdfController {
     @PostMapping("/rename")
     public String chooseTypes(@ModelAttribute("dto") RdfTypesSelectionDto dto,
                               @RequestParam(value = "includeOrigId" , required = false) String[] includeOrigId,
-                              @RequestParam(value = "selectedProperties" , required = false) String[] selectedProperties,
-                              RedirectAttributes redirectAttributes) throws IOException {
-        String result = rdfService.renameModel(includeOrigId, selectedProperties);
-        if (result.equals("OK")) {
-            return "redirect:/download";
-        }
-        redirectAttributes.addAttribute("error", result);
+                              @RequestParam(value = "selectedProperties" , required = false) String[] selectedProperties) {
+        rdfService.renameModel(includeOrigId, selectedProperties);
+        return "redirect:/confirm";
+    }
+
+    @GetMapping("/confirm")
+    public String confirm(Model model) {
+        model.addAttribute("renamingMap", rdfService.getRenamingMap());
+        return "confirmForm";
+    }
+
+    @PostMapping(value="/confirm", params = "save")
+    public String saveConfirm() {
+        return "redirect:/download";
+    }
+
+    @PostMapping(value="/confirm", params = "cancel")
+    public String cancelConfirm() {
         return "redirect:/rename";
     }
 
