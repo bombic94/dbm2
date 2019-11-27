@@ -152,16 +152,15 @@ public class RdfService {
             if (resourceTypeString == null || resourceTypeString.isEmpty()) {
                 continue;
             }
-            //for each predicate in subject
-            for (Statement statement : resource.listProperties().toList()) {
-                //for each selected predicate for renaming
-                for (SelectedPredicate selectedPredicate : selectedPredicates) {
+            //for each selected predicate for renaming
+            for (SelectedPredicate selectedPredicate : selectedPredicates) {
+                //for each predicate in subject
+                for (Statement statement : resource.listProperties().toList()) {
 
+                    String newObjectName = getNewObjectNameForRenaming(statement, selectedPredicate, resourceTypeString);
                     //need to check if resource type is one of selected types and selected predicate is same as predicate
-                    if (statement.getPredicate().getLocalName().equals(selectedPredicate.getPredicate().getName())
-                            && Utils.getLastPartFromURI(resourceTypeString).equals(selectedPredicate.getType().getName())) {
+                    if (newObjectName != null && !newObjectName.isEmpty()) {
                         //append predicate name and object name to subject new name
-
                         if (selectedPredicate.getPredicate().getMultiple() == true) {
                             if (sb.toString().contains(selectedPredicate.getPredicate().getExampleObject())) {
                                 continue;
@@ -173,7 +172,7 @@ public class RdfService {
                         } else {
                             sb.append(selectedPredicate.getPredicate().getName())
                                     .append("-")
-                                    .append(Utils.getFormattedObjectName(statement.getObject().toString()))
+                                    .append(Utils.getFormattedObjectName(newObjectName))
                                     .append("-");
                         }
                         rename = true;
@@ -200,6 +199,28 @@ public class RdfService {
                 renameResource(resource, sb.toString());
             }
         }
+    }
+
+    private String getNewObjectNameForRenaming(Statement statement, SelectedPredicate selectedPredicate, String resourceTypeString) {
+        //types mismatch
+        if (!Utils.getLastPartFromURI(resourceTypeString).equals(selectedPredicate.getType().getName())) return null;
+        //selected predicate on 0 level
+        if (statement.getPredicate().getLocalName().equals(selectedPredicate.getPredicate().getName())) return statement.getObject().toString();
+        //selected predicate on 1 level
+        if (statement.getObject().isResource()) {
+            for (Statement statement1 : statement.getObject().asResource().listProperties().toList()) {
+                String name = statement.getPredicate().getLocalName() + ":" + statement1.getPredicate().getLocalName();
+                if (name.equals(selectedPredicate.getPredicate().getName())) return statement1.getObject().toString();
+                //selected predicate on 2 level
+                if (statement1.getObject().isResource()) {
+                    for (Statement statement2 : statement1.getObject().asResource().listProperties().toList()) {
+                        String name2 = name + ":" + statement2.getPredicate().getLocalName();
+                        if (name2.equals(selectedPredicate.getPredicate().getName())) return statement.getObject().toString();
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     /**
