@@ -42,11 +42,12 @@
 <!--                            </td>-->
 <!--                        </th:block>-->
                         <td>
-                            <select th:id="${typeStat.index} + '-select'" multiple="multiple" name="selectedProperties">
+                            <select class="form-control" th:id="${typeStat.index} + '-select'" multiple="multiple" name="selectedProperties">
                                     <option th:each="property : ${type.properties}"
-                                        th:value="${property.id}"
+                                            th:value="${property.id}"
                                             th:selected="${property.selected}"
-                                            th:text="${property.name} + '-' + ${property.exampleObject}">Text</option>
+                                            th:id="${property.name} + '-' + ${property.exampleObject}"
+                                            th:text="${property.name}">Text</option>
                             </select>
                         </td>
                         <td>
@@ -78,7 +79,7 @@
                 var numId = ($(this).attr("id").substring(0, $(this).attr("id").indexOf('-')));
                 $("#" + numId + "-text").text("[base]");
                 $(this).find('option:selected').each(function(){
-                    $("#" + numId + "-text").append("-").append($(this).text());
+                    $("#" + numId + "-text").append("-").append($(this).attr('id'));
                 });
                 if ($("#" + numId + "-include-id").is(':checked')) {
                     $("#" + numId + "-text").append("-[id]");
@@ -92,7 +93,7 @@
             var numId = ($(this).attr("id").substring(0, $(this).attr("id").indexOf('-')));
             $("#" + numId + "-text").text("[base]");
             $(this).find('option:selected').each(function(){
-                $("#" + numId + "-text").append("-").append($(this).text());
+                $("#" + numId + "-text").append("-").append($(this).attr('id'));
             });
             if ($("#" + numId + "-include-id").is(':checked')) {
                 $("#" + numId + "-text").append("-[id]");
