@@ -32,22 +32,14 @@
                                    th:value="${type.name}">
                             <label>Include original ID</label>
                         </td>
-<!--                        <th:block th:each="property : *{types[__${typeStat.index}__].properties}">-->
-<!--                            <td>-->
-<!--                                <input type="checkbox" name="selectedProperties"-->
-<!--                                       th:value="*{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].id}}"-->
-<!--                                       th:checked="*{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].selected}}"/>-->
-<!--                                <label th:text="*{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].name}} + ' ('-->
-<!--                                + *{{types[__${typeStat.index}__].properties[__${propertyStat.index}__].exampleObject}} + ')'" ></label>-->
-<!--                            </td>-->
-<!--                        </th:block>-->
                         <td>
                             <select class="form-control" th:id="${typeStat.index} + '-select'" multiple="multiple" name="selectedProperties">
                                     <option th:each="property : ${type.properties}"
                                             th:value="${property.id}"
                                             th:selected="${property.selected}"
                                             th:id="${property.name} + '-' + ${property.exampleObject}"
-                                            th:text="${property.name}">Text</option>
+                                            th:text="${property.name}">
+                                    </option>
                             </select>
                         </td>
                         <td>
@@ -57,7 +49,6 @@
                 </th:block>
             </table>
             <input type="submit" value="Submit"/>
-
         </form>
     </div>
 </div>
@@ -73,7 +64,6 @@
                 } else {
                     $("#" + numId + "-text").text($("#" + numId + "-text").html().substring(0, $("#" + numId + "-text").html().length - 5));
                 }
-
             });
             $("select").on("change", function() {
                 var numId = ($(this).attr("id").substring(0, $(this).attr("id").indexOf('-')));
@@ -87,7 +77,6 @@
             });
         }
     );
-
     var checkSelected = function() {
         $("select").each(function() {
             var numId = ($(this).attr("id").substring(0, $(this).attr("id").indexOf('-')));
