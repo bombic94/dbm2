@@ -229,10 +229,16 @@ public class RdfService {
 
     private String getResourceType(Resource resource) {
         Property typeURI = model.getProperty(RDF_TYPE.toString());
-        Statement statement = resource.getProperty(typeURI);
-        if (statement == null) {
+        List<Statement> statements = resource.listProperties(typeURI).toList();
+        if (statements.size() > 1) {
+            System.out.println(statements.size());
+        }
+        //no types
+        if (statements.isEmpty()) {
             return null;
         }
+        //first found type
+        Statement statement = statements.get(0);
         Object object = statement.getObject();
         if (object == null) {
             return null;
