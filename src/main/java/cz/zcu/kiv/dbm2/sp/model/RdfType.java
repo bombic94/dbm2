@@ -1,11 +1,6 @@
 package cz.zcu.kiv.dbm2.sp.model;
 
-import cz.zcu.kiv.dbm2.sp.util.Utils;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.Statement;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,19 +14,6 @@ public class RdfType implements Comparable {
         this.name = name;
         this.properties = new ArrayList<>();
     }
-
-    /**
-     * For each predicate in subject, generate object holding predicate info
-     */
-//    public void generateProperties(Resource resource) {
-//        for (Statement statement : resource.listProperties().toList()) {
-//            RdfPredicate predicate = new RdfPredicate(statement.getPredicate().getLocalName(),
-//                    Utils.getFormattedObjectName(statement.getObject().toString()), false);
-//            properties.add(predicate);
-//        }
-//        Collections.sort(properties);
-//        groupPredicates();
-//    }
 
     /**
      * If subject contains multiple same predicates with different objects, group it to one predicate with count

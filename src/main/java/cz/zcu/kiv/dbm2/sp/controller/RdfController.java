@@ -1,7 +1,5 @@
 package cz.zcu.kiv.dbm2.sp.controller;
 
-import java.io.IOException;
-
 import cz.zcu.kiv.dbm2.sp.dto.RdfTypesSelectionDto;
 import cz.zcu.kiv.dbm2.sp.model.RdfFormat;
 import cz.zcu.kiv.dbm2.sp.service.RdfService;
@@ -13,9 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 @Controller

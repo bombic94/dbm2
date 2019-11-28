@@ -110,6 +110,13 @@ public class RdfService {
         return sortedRdfTypes;
     }
 
+    /**
+     * Add predicates to RdfType recursively
+     * @param prefix prefix to use in name of predicate (parent + ':')
+     * @param type type to which add RdfPredicate
+     * @param statement resource statement
+     * @param depth depth of recursive
+     */
     private void addPredicatesRecursively(String prefix, RdfType type, Statement statement, int depth) {
         //max depth 2, go deeper recursively
         if (depth <= 1 && statement.getObject().isResource()) {
@@ -201,6 +208,14 @@ public class RdfService {
         }
     }
 
+    /**
+     * Decide if renaming should happen and if so, create object name. Go to depth 2
+     * TODO possible to change to recursive function
+     * @param statement Statement of current Resource
+     * @param selectedPredicate predicate selected for renaming
+     * @param resourceTypeString current Resource type name
+     * @return objectName if renaming should happen for this statement, null otherwise
+     */
     private String getNewObjectNameForRenaming(Statement statement, SelectedPredicate selectedPredicate, String resourceTypeString) {
         //types mismatch
         if (!Utils.getLastPartFromURI(resourceTypeString).equals(selectedPredicate.getType().getName())) return null;
@@ -275,6 +290,12 @@ public class RdfService {
         }
     }
 
+    /**
+     * Return type name of current Resource. If multiple types are there, get first one.
+     * If resource has no type, return null
+     * @param resource current Resource
+     * @return type name, if Resource has one (if more, first one). Null, if resource has no type
+     */
     private String getResourceType(Resource resource) {
         Property typeURI = model.getProperty(RDF_TYPE.toString());
         List<Statement> statements = resource.listProperties(typeURI).toList();
@@ -299,7 +320,7 @@ public class RdfService {
      * so user can confirm all changes before downloading the file
      * @param old old resource
      * @param uri new resource
-     * @return
+     * @return Renamed resource
      */
     public Resource renameResource(Resource old, String uri) {
 
