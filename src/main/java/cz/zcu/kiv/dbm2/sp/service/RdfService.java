@@ -230,7 +230,7 @@ public class RdfService {
                 if (statement1.getObject().isResource()) {
                     for (Statement statement2 : statement1.getObject().asResource().listProperties().toList()) {
                         String name2 = name + ":" + statement2.getPredicate().getLocalName();
-                        if (name2.equals(selectedPredicate.getPredicate().getName())) return statement.getObject().toString();
+                        if (name2.equals(selectedPredicate.getPredicate().getName())) return statement2.getObject().toString();
                     }
                 }
             }
